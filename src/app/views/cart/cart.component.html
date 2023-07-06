@@ -1,0 +1,89 @@
+<div class="container position-relative  pt-5 mt-3 overflow-hidden">
+
+    <div class="loading w-100 h-100 position-absolute d-flex justify-content-center align-items-center" *ngIf="isLoading">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="empty" *ngIf="numOfItem == 0">
+        <h1 class="rating-color">
+            Sorry ...</h1>
+
+        <img src="assets/img/cart.png" class="w-75 m-auto">
+        <div class="btn-container d-flex justify-content-end ">
+            <button class="mt-5 mb-4 btn btn-danger" routerLink="/home">Go Shopping</button>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="numOfItem !== 0">
+
+        <div class="row">
+            <div class="col-12 my-5">
+            </div>
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <h1 class="h3">My Cart Items : </h1>
+                    <h1 class="h6 fw-bolder text-main">Num. Of My Cart Items : {{numOfItem}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-4 my-3">
+            <div class="col-md-2" *ngFor="let product of products">
+                <div class=" w-100 product p-2">
+
+                    <div class="position-relative">
+                        <div class="position-absolute w-100 h-100  d-flex justify-content-center align-items-center image-loading">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <img class="w-100" [src]="product.product.imageCover" alt="cover">
+                    </div>
+                    <div class="my-1  ">
+                        <p class="card-title font-sm text-main fw-bolder">{{product.product.brand.name|uppercase}}</p>
+                        <h2 class="h6">{{product.product.title.split(' ').slice(0,2).join(' ')}}</h2>
+                    </div>
+                    <div class="d-flex my-1 justify-content-between">
+                        <p>{{product.price|currency:'EGP'}}<span></span></p>
+                    </div>
+                    <div>
+                        <p class="text-center">count</p>
+                    </div>
+                    <div class="d-flex justify-content-around mb-3 align-items-center">
+                        <button class="border border-1 border-danger  p-2  cursor-pointer" (click)="updateCartItem(product?.product._id , product.count - 1); product.count = product.count - 1">-</button>
+                        <span class="text-success">{{product.count }}</span>
+                        <i class="fa-solid fa-circle-notch fa-spin d-none"></i>
+                        <button class="border border-1 border-success  p-2  cursor-pointer" (click)="updateCartItem(product?.product._id , product.count + 1 ); product.count = product.count + 1">+</button>
+                    </div>
+
+                    <button class="btn w-100 text-white cartBtn bg-main d-block mb-1" (click)="removeCartItem(product?.product._id)">
+                             <i  class="fa-solid fa-circle-notch fa-spin d-none" ></i>
+                             <i class="fa-solid fa-minus"></i> Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row flex-wrap" *ngIf="numOfItem !== 0">
+        <div class="col-12">
+            <div class="bg-main-light p-3 my-3">
+                <h5 class="h4 fw-bolder">Shop Cart</h5>
+                <div class="d-flex justify-content-between">
+                    <h6 class="h5 text-main">Total User Cart Price : <span class="text-danger">{{data?.totalCartPrice|currency:'EGP'}}</span></h6>
+                    <button class="btn btn-danger d-block  text-white" (click)="clearCartItems() ; this.products = []">
+                      <i  class="fa-solid fa-circle-notch fa-spin" *ngIf="clear" ></i>
+                      <span *ngIf="!clear" class="clear-cart">Clear Cart</span>
+                   </button>
+                </div>
+                <button class="btn bg-main text-white d-flex align-items-center justify-content-center" [routerLink]="['/checkout', data._id , data.cartOwner]"><span>Online Payment</span> <img src="assets/img/visa_.png"  height="40" width="40" class="ms-2" alt=""></button>
+            </div>
+        </div>
+    </div>
+</div>

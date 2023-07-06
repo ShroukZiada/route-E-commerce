@@ -1,0 +1,66 @@
+<div class="container position-relative min-vh-100 pt-5">
+    <div class="loading start-0 top-0 w-100 vh-100 position-fixed d-flex justify-content-center align-items-center" *ngIf="isLoading">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="row g-0 my-3">
+        <div class="col-md-9">
+            <div>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide class="h-100 position-relative">
+                        <img src="assets/img/1.png" style="height: 450px;" alt="">
+                        <div class="position-absolute w-100 h-100  d-flex justify-content-center align-items-center image-loading" style="height: 450px;">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide class="h-100  position-relative">
+                        <img src="assets/img/_n.jpg" class="w-100" alt="" style="height: 450px;">
+                        <div class="position-absolute w-100 h-100  d-flex justify-content-center align-items-center image-loading" style="height: 450px;">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template carouselSlide class="h-100 position-relative">
+                        <img src="assets/img/sale.jpg" class="w-100" alt="" style="height: 450px;">
+                        <div class="position-absolute w-100 h-100  d-flex justify-content-center align-items-center image-loading" style="height: 450px;">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="" style="height: 450px;">
+                <img src="assets/img/shopping.jpg" class="w-100 h-50" alt="">
+                <img src="assets/img/best-online-shopping.jpg" class=" w-100 h-50 " alt=" ">
+            </div>
+        </div>
+    </div>
+    <div class="row my-5 position-relative ">
+        <app-owlcategories></app-owlcategories>
+    </div>
+    <div class="row my-5 position-relative ">
+        <app-owl-brands></app-owl-brands>
+    </div>
+    <div class="row gy-4 position-relative my-3 " *ngIf="!isLoading ">
+        <app-single-page></app-single-page>
+    </div>
+</div>

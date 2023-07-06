@@ -1,0 +1,8 @@
+input {
+    background-color: transparent;
+    outline: none;
+}
+
+input:focus {
+    background-color: transparent;
+}
