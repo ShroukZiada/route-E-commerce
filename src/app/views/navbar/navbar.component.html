@@ -2,9 +2,10 @@
     <div class="container">
         <a class="navbar-brand" routerLink="home">
             <img src="assets/img/logo.png" alt="logo" class=" fresh-logo"> Fresh Cart</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -36,21 +37,16 @@
                     </a>
                 </li>
 
-                <li class="nav-item" *ngIf="!isconformlogin">
-                    <a routerLink="login"><button class="btn me-2 btn__style p2 text-dark m-1 btn__hover ">logIn<i class="fa-solid fa-user"></i></button></a>
-                </li>
-                <li class="nav-item" *ngIf="!isconformlogin">
-                    <a routerLink="signUp"><button class="btn me-2 btn__style p2 text-dark m-1 btn__hover ">signUp<i class="fa-solid fa-user"></i></button></a>
-                </li>
 
                 <li class="nav-item m-2 mx-2">
                     <a routerLink="wishlist" *ngIf="isconformlogin" routerLinkActive="active">
                         <span class="position-relative pe-3">
-                          <i class="pi pi-heart i__f" *ngIf="isEmptyWhishList" ></i>
-                          <i class="pi pi-heart-fill ic i__f" *ngIf="!isEmptyWhishList"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main px-2 ">
-                          {{wishProductNum}}
-                        </span>
+                            <i class="pi pi-heart i__f" *ngIf="isEmptyWhishList"></i>
+                            <i class="pi pi-heart-fill ic i__f" *ngIf="!isEmptyWhishList"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main px-2 ">
+                                {{wishProductNum}}
+                            </span>
                         </span>
                     </a>
                 </li>
@@ -58,30 +54,36 @@
                 <li class="nav-item m-2 mx-2">
                     <a routerLink="cart" *ngIf="isconformlogin" routerLinkActive="active">
                         <span class="position-relative pe-3">
-                          <i class="pi pi-shopping-cart i__f" *ngIf="isEmptyCart" ></i>
-                          <i class="pi pi-cart-plus ic i__f" *ngIf="!isEmptyCart"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main px-2 " *ngIf="!isLoading">
-                        {{numOfProducts}}
-                      </span>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main p-2" *ngIf="isLoading">
-                        <i  class="fa-solid  fa-circle-notch fa-spin"></i>
-                      </span>
+                            <i class="pi pi-shopping-cart i__f" *ngIf="isEmptyCart"></i>
+                            <i class="pi pi-cart-plus ic i__f" *ngIf="!isEmptyCart"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main px-2 "
+                                *ngIf="!isLoading">
+                                {{numOfProducts}}
+                            </span>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main p-2"
+                                *ngIf="isLoading">
+                                <i class="fa-solid  fa-circle-notch fa-spin"></i>
+                            </span>
                         </span>
                     </a>
                 </li>
 
                 <li class="nav-item dropdown" *ngIf="isconformlogin">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="pi pi-user ic"></i> Profile
+                        Profile
                     </a>
                     <ul class="dropdown-menu dropdown-menu-transparent border__style">
                         <li>
                             <p class="dropdown-item text-capitalize " aria-label="name">
+                                <i class="pi pi-user ic"></i>
                                 {{userData}}
                             </p>
                         </li>
                         <li class="nav-item">
-                            <button class="btn me-2 btn__style p2 text-dark m-1 ms-3 border__style" (click)="logOut()">logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                            <button class="btn me-2 btn__style p2 text-dark m-1 ms-3 border__style"
+                                (click)="logOut()">logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                         </li>
                     </ul>
                 </li>
